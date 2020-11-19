@@ -1,14 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function App() {
+import SearchInput from './Components/SearchInput';
+
+
+export default class Part2 extends Component{
+  render(){
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={[styles.largeText, styles.textStyle]}>
+        New York
+      </Text>
+      <Text style={[styles.smallText, styles.textStyle]}>
+        Light Cloud
+      </Text>
+      <Text style={[styles.largeText, styles.textStyle]}>24*</Text>
+      <SearchInput placeholder="Search any city"/>
     </View>
   );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -17,5 +28,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  textStyle: {
+    textAlign: 'center',
+    ...Platform.select({
+      ios: {
+        fontFamily: 'AvenirNext-Regular',
+      },
+      andriod: {
+        fontFamily: 'Roboto',
+      },
+    }),
+  },
+  largeText: {
+    fontSize: 44,
+  },
+  smallText: {
+    fontSize: 18,
   },
 });
